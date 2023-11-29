@@ -1,6 +1,7 @@
 import "./Header.css";
 import React from "react";
-import { Link, Navlink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+
 import Logo from "../assets/logo.jpg";
 export const Header = () => {
   return (
@@ -11,12 +12,12 @@ export const Header = () => {
           <span>Shopping Cart</span>
         </Link>
         <nav className="navigation">
-          <Navlink to="/" className="link">
+          <NavLink to="/" className="link" end>
             Home
-          </Navlink>
-          <Navlink to="/" className="link">
+          </NavLink>
+          <NavLink to="/cart" className="link">
             Cart
-          </Navlink>
+          </NavLink>
         </nav>
         <Link to="/cart" className="items">
           <span>Cart: 2</span>
