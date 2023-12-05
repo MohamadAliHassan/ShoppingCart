@@ -1,5 +1,14 @@
-import React from "react";
+import "./CartCard.css";
 
-export const CartCard = () => {
-  return <div>ProductCard</div>;
+export const CartCard = ({ product }) => {
+  //since its a form of object
+  const { name, price, image } = product;
+  return (
+    <div className="cartCard">
+      <img src={image} alt={name} />
+      <p className="productName">{name}</p>
+      <p className="productPrice">${price}</p>
+      <button>Remove</button>
+    </div>
+  );
 };
