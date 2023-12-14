@@ -4,7 +4,7 @@ import { useTitle } from "../hooks/useTitle";
 import { useCart } from "../context/CardContext";
 
 export const Cart = () => {
-  //What we have done now is that we destructured total from our initial state cartContext.
+  //What we have done now is that we destructured total from our cartContext.
   const { total } = useCart();
   useTitle("Cart");
   const products = [
