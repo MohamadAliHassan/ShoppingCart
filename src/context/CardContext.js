@@ -15,6 +15,7 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (product) => {
     const updatedCartList = state.cartList.concat(product);
+    updatedTotal(updatedCartList);
     dispatch({
       //What we need to perform.
       type: "ADD_TO_CART",
@@ -29,12 +30,25 @@ export const CartProvider = ({ children }) => {
     const updatedCartList = state.cartList.filter(
       (current) => current.id !== product.id
     );
+    updatedTotal(updatedCartList);
 
     dispatch({
       type: "REMOVE_FROM_CART",
 
       payload: {
         products: updatedCartList,
+      },
+    });
+  };
+
+  const updatedTotal = (products) => {
+    let total = 0;
+    products.forEach((product) => (total = total + product.price));
+
+    dispatch({
+      type: "UPDATE_TOTAL",
+      payload: {
+        total,
       },
     });
   };
