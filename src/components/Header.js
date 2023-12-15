@@ -3,7 +3,9 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import Logo from "../assets/logo.jpg";
+import { useCart } from "../context/CardContext";
 export const Header = () => {
+  const { cartList } = useCart();
   return (
     <>
       <header>
@@ -20,7 +22,7 @@ export const Header = () => {
           </NavLink>
         </nav>
         <Link to="/cart" className="items">
-          <span>Cart: 2</span>
+          <span>Cart: {cartList.length}</span>
         </Link>
       </header>
     </>
