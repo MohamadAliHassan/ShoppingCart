@@ -14,19 +14,37 @@ export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
   const addToCart = (product) => {
-    const updatedCart = state.cartList.concat(product);
+    const updatedCartList = state.cartList.concat(product);
     dispatch({
       //What we need to perform.
-      type: ,
-      
-      payload: 
-    })
+      type: "ADD_TO_CART",
+
+      payload: {
+        products: updatedCartList,
+      },
+    });
+  };
+  const removeFromCart = (product) => {
+    //Filter out products that doesnt match the id of our currentproducts. Easy way of removing stuff.
+    const updatedCartList = state.cartList.filter(
+      (current) => current.id !== product.id
+    );
+
+    dispatch({
+      type: "REMOVE_FROM_CART",
+
+      payload: {
+        products: updatedCartList,
+      },
+    });
   };
 
   //TASK: Make this value accessible to any component
   const value = {
     total: state.total,
     cartList: state.cartList,
+    addToCart,
+    removeFromCart,
   };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
